@@ -1,0 +1,38 @@
+name: LectureLoop material agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      course_id:
+        description: Course identifier, for example dbms-unit-2
+        required: true
+        type: string
+      source_path:
+        description: Repository path to a .txt, .md, or text-based .pdf lecture source
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generate-materials:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Generate study material
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m lectureloop.cli ingest --course "${{ inputs.course_id }}" --source "${{ inputs.source_path }}" --output "materials/${{ inputs.course_id }}.json"
+      - name: Save generated study material
+        run: |
+          git config user.name "lectureloop-bot"
+          git config user.email "lectureloop-bot@users.noreply.github.com"
+          git add materials/
+          git diff --cached --quiet || git commit -m "docs: generate ${{ inputs.course_id }} study material"
+          git push
+

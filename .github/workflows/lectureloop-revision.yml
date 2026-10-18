@@ -1,0 +1,40 @@
+name: LectureLoop revision agent
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lectureloop-revision
+  cancel-in-progress: false
+
+jobs:
+  send-due-revisions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Process Telegram commands first
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: python -m lectureloop.cli updates --store data/students.json
+      - name: Send due revision challenges
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: python -m lectureloop.cli dispatch --store data/students.json
+      - name: Persist Telegram cursor and next review dates
+        run: |
+          git config user.name "lectureloop-bot"
+          git config user.email "lectureloop-bot@users.noreply.github.com"
+          git add data/students.json
+          git diff --cached --quiet || git commit -m "chore: update LectureLoop revision state"
+          git push
+
