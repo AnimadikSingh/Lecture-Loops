@@ -130,11 +130,66 @@
           "next_review_at": "2026-10-18T12:53:54.001908+00:00",
           "last_question": "What is one important good programming practice regarding comments?",
           "last_answer": "Use comments to explain why a decision was made, not merely to repeat what the code does."
+        },
+        "java_intro:T1": {
+          "title": "Introduction to Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:02:11.329856+00:00",
+          "last_question": "What are two main advantages of Java's design compared to C/C++?",
+          "last_answer": "Automatic memory management (garbage collection) and avoidance of some low-level operations."
+        },
+        "java_intro:T2": {
+          "title": "Key Java Features & Components",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:02:11.329856+00:00",
+          "last_question": "Describe the typical workflow for developing and running a Java program using the JDK and JVM.",
+          "last_answer": "Write source code in a .java file, compile it with 'javac' into bytecode (.class file), and then run the bytecode on a JVM."
+        },
+        "java_intro:T6": {
+          "title": "First Java Program & Execution",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:02:11.329856+00:00",
+          "last_question": "What does String[] args in the main method represent?",
+          "last_answer": "It receives command-line arguments passed to the program."
+        },
+        "java_intro:T3": {
+          "title": "Java Basics: Variables, Operators & Control Flow",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:02:11.329856+00:00",
+          "last_question": "What is the primary difference between a while loop and a do-while loop?",
+          "last_answer": "A 'do-while' loop executes its body at least once, whereas a 'while' loop may not execute at all if the condition is initially false."
+        },
+        "java_intro:T4": {
+          "title": "Object-Oriented Programming (OOP) in Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:02:11.329856+00:00",
+          "last_question": "What is the main difference between a method and a constructor?",
+          "last_answer": "A method performs a task and may return a value, while a constructor initializes a new object and has no return type."
+        },
+        "java_intro:T5": {
+          "title": "Advanced Java Concepts & Best Practices",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:02:11.329856+00:00",
+          "last_question": "Name two good programming practices mentioned in the lecture.",
+          "last_answer": "Choose meaningful names, indent code consistently, use comments to explain 'why', validate input, prefer clear solutions, test thoroughly, use version control. (Any two of these)"
         }
       },
       "courses": [
         "dbms-unit-1",
-        "java-introduction-5-pages"
+        "java-introduction-5-pages",
+        "java_intro"
       ],
       "active_revision": "dbms-unit-1:functional-dependency"
     }

@@ -1,0 +1,215 @@
+{
+  "title": "Introduction to Java Programming",
+  "summary": "This lecture provides a beginner-friendly guide to Java programming, covering its history, key features, core components (JDK, JRE, JVM, bytecode), and basic syntax. It introduces fundamental concepts like variables, operators, control flow, object-oriented programming (OOP) principles, methods, constructors, exception handling, and collections, concluding with good programming practices.",
+  "topics": [
+    {
+      "id": "T1",
+      "title": "Introduction to Java",
+      "notes": "Java is a high-level, general-purpose programming language developed at Sun Microsystems by James Gosling in 1995. It is now maintained by Oracle. Widely used in enterprise, backend, financial, Android, and educational applications. Its syntax is similar to C/C++, but features automatic memory management."
+    },
+    {
+      "id": "T2",
+      "title": "Key Java Features & Components",
+      "notes": "Key features include being object-oriented, platform-independent (bytecode runs on JVM), readable, with automatic memory management (garbage collector), robust design, and multithreading support. Core components: JDK (Development Kit), JRE (Runtime Environment), JVM (Virtual Machine), and Bytecode (intermediate instructions)."
+    },
+    {
+      "id": "T6",
+      "title": "First Java Program & Execution",
+      "notes": "A basic Java program declares a public class (matching the .java filename) and includes a 'main' method (public static void main(String[] args)) as its entry point. System.out.println() prints output. Programs are compiled using 'javac filename.java' and executed using 'java ClassName'."
+    },
+    {
+      "id": "T3",
+      "title": "Java Basics: Variables, Operators & Control Flow",
+      "notes": "Java is statically typed, requiring variable type declaration. Primitive types: int, double, char, boolean. String is a class. Operators include arithmetic (+, -, *, /, %), relational (==, !=, <, >), and logical (&&, ||, !). Control flow uses if/else for conditions, switch for multiple cases, and for/while/do-while for loops."
+    },
+    {
+      "id": "T4",
+      "title": "Object-Oriented Programming (OOP) in Java",
+      "notes": "OOP organizes programs around classes (blueprints) and objects (instances). Principles: Encapsulation (bundling data and methods), Abstraction (hiding complexity), Inheritance (reusing code with 'extends'), and Polymorphism (runtime behavior selection). Methods perform tasks; constructors initialize objects."
+    },
+    {
+      "id": "T5",
+      "title": "Advanced Java Concepts & Best Practices",
+      "notes": "Exception handling uses try/catch/finally to manage runtime errors. Arrays store fixed-size elements. The Collections Framework provides flexible data structures like List (e.g., ArrayList for ordered, duplicate-permitting groups), Set (for unique elements), and Map (for key-value pairs). Good practices include meaningful names, consistent indentation, comments, input validation, and testing."
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "When was Java publicly released?",
+      "back": "1995",
+      "topic_id": "T1"
+    },
+    {
+      "front": "Who led the development of Java at Sun Microsystems?",
+      "back": "James Gosling",
+      "topic_id": "T1"
+    },
+    {
+      "front": "What does 'platform-independent' mean for Java?",
+      "back": "Its bytecode can run on any compatible Java Virtual Machine (JVM).",
+      "topic_id": "T2"
+    },
+    {
+      "front": "What is the role of Java's garbage collector?",
+      "back": "To automatically reclaim memory from objects that are no longer reachable.",
+      "topic_id": "T2"
+    },
+    {
+      "front": "What does JDK stand for?",
+      "back": "Java Development Kit",
+      "topic_id": "T2"
+    },
+    {
+      "front": "What does JVM stand for?",
+      "back": "Java Virtual Machine",
+      "topic_id": "T2"
+    },
+    {
+      "front": "What is Java bytecode?",
+      "back": "Intermediate instructions produced by the Java compiler from source code.",
+      "topic_id": "T2"
+    },
+    {
+      "front": "What filename convention should be used for a public Java class named MyClass?",
+      "back": "MyClass.java",
+      "topic_id": "T6"
+    },
+    {
+      "front": "What is the entry point method for a simple Java application?",
+      "back": "public static void main(String[] args)",
+      "topic_id": "T6"
+    },
+    {
+      "front": "What command compiles MyProgram.java?",
+      "back": "javac MyProgram.java",
+      "topic_id": "T6"
+    },
+    {
+      "front": "What command runs the compiled MyProgram.class?",
+      "back": "java MyProgram",
+      "topic_id": "T6"
+    },
+    {
+      "front": "What does 'statically typed' mean in Java?",
+      "back": "A variable's type is declared and checked by the compiler.",
+      "topic_id": "T3"
+    },
+    {
+      "front": "Name two primitive data types in Java.",
+      "back": "int, double (or char, boolean, byte, short, long, float)",
+      "topic_id": "T3"
+    },
+    {
+      "front": "Is String a primitive type in Java?",
+      "back": "No, String is a class.",
+      "topic_id": "T3"
+    },
+    {
+      "front": "What is the result of 10 / 3 in integer division?",
+      "back": "3",
+      "topic_id": "T3"
+    },
+    {
+      "front": "What is a class in OOP?",
+      "back": "A blueprint for creating objects.",
+      "topic_id": "T4"
+    },
+    {
+      "front": "What is an object in OOP?",
+      "back": "An instance of a class.",
+      "topic_id": "T4"
+    },
+    {
+      "front": "Explain encapsulation in OOP.",
+      "back": "Grouping data and methods together, controlling access.",
+      "topic_id": "T4"
+    },
+    {
+      "front": "Explain polymorphism in OOP.",
+      "back": "Allowing objects of different classes to be treated as objects of a common type, with behavior selected at runtime.",
+      "topic_id": "T4"
+    },
+    {
+      "front": "What is the purpose of a try-catch block?",
+      "back": "To handle exceptions and prevent program crashes.",
+      "topic_id": "T5"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In what major industry sectors is Java widely used?",
+      "answer": "Java is widely used in enterprise applications, backend services, financial systems, Android development, and educational programming.",
+      "topic_id": "T1"
+    },
+    {
+      "question": "What are two main advantages of Java's design compared to C/C++?",
+      "answer": "Automatic memory management (garbage collection) and avoidance of some low-level operations.",
+      "topic_id": "T1"
+    },
+    {
+      "question": "List four key features of Java.",
+      "answer": "Object-oriented, platform-independent, readable/structured, automatic memory management, robust/secure design, multithreading support. (Any four of these)",
+      "topic_id": "T2"
+    },
+    {
+      "question": "Describe the typical workflow for developing and running a Java program using the JDK and JVM.",
+      "answer": "Write source code in a .java file, compile it with 'javac' into bytecode (.class file), and then run the bytecode on a JVM.",
+      "topic_id": "T2"
+    },
+    {
+      "question": "What is the role of System.out.println() in a Java program?",
+      "answer": "It prints text to the console and moves to a new line.",
+      "topic_id": "T6"
+    },
+    {
+      "question": "What does String[] args in the main method represent?",
+      "answer": "It receives command-line arguments passed to the program.",
+      "topic_id": "T6"
+    },
+    {
+      "question": "Explain the difference between int and double data types.",
+      "answer": "'int' is used for whole numbers, while 'double' is used for decimal numbers (floating-point).",
+      "topic_id": "T3"
+    },
+    {
+      "question": "Give an example of an arithmetic operator and a relational operator in Java.",
+      "answer": "Arithmetic: + (addition), Relational: == (equals to). (Other valid examples include -, *, /, %, !=, <, >).",
+      "topic_id": "T3"
+    },
+    {
+      "question": "When would you use a switch statement instead of an if/else statement?",
+      "answer": "A 'switch' statement is useful when comparing one value against several possible cases.",
+      "topic_id": "T3"
+    },
+    {
+      "question": "What is the primary difference between a while loop and a do-while loop?",
+      "answer": "A 'do-while' loop executes its body at least once, whereas a 'while' loop may not execute at all if the condition is initially false.",
+      "topic_id": "T3"
+    },
+    {
+      "question": "What is abstraction in the context of OOP?",
+      "answer": "Abstraction is showing essential behavior while hiding unnecessary implementation details, often using interfaces and abstract classes.",
+      "topic_id": "T4"
+    },
+    {
+      "question": "How is inheritance implemented in Java?",
+      "answer": "By creating a class based on another class using the 'extends' keyword, allowing reuse or specialization of behavior.",
+      "topic_id": "T4"
+    },
+    {
+      "question": "What is the main difference between a method and a constructor?",
+      "answer": "A method performs a task and may return a value, while a constructor initializes a new object and has no return type.",
+      "topic_id": "T4"
+    },
+    {
+      "question": "When would you use a Set from the Java Collections Framework instead of a List?",
+      "answer": "A 'Set' is used when unique elements are required, while a 'List' preserves order and permits duplicates.",
+      "topic_id": "T5"
+    },
+    {
+      "question": "Name two good programming practices mentioned in the lecture.",
+      "answer": "Choose meaningful names, indent code consistently, use comments to explain 'why', validate input, prefer clear solutions, test thoroughly, use version control. (Any two of these)",
+      "topic_id": "T5"
+    }
+  ]
+}

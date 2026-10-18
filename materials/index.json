@@ -15,6 +15,14 @@
       "topic_count": 8,
       "flashcard_count": 17,
       "quiz_count": 14
+    },
+    {
+      "id": "java_intro",
+      "title": "Introduction to Java Programming",
+      "file": "java_intro.json",
+      "topic_count": 6,
+      "flashcard_count": 20,
+      "quiz_count": 15
     }
   ]
 }
