@@ -1,0 +1,145 @@
+{
+  "title": "Java Programming: Continuation (Part 3)",
+  "summary": "This lecture covers essential advanced Java topics including exception handling for robust error management, the Collections Framework for efficient data structures, generics for compile-time type safety, basic file I/O operations, and an introduction to multithreading for concurrent execution.",
+  "topics": [
+    {
+      "id": "EXCP001",
+      "title": "Exception Handling in Java",
+      "notes": "Discusses how Java handles unusual conditions during execution using try, catch, finally, checked vs. unchecked exceptions, and the throw/throws keywords."
+    },
+    {
+      "id": "COLL001",
+      "title": "Java Collections Framework",
+      "notes": "Introduces reusable data structures like List, Set, Queue, and Map, explaining their characteristics and common implementations (ArrayList, HashSet, HashMap)."
+    },
+    {
+      "id": "GENS001",
+      "title": "Generics and Type Safety",
+      "notes": "Explains how generics enable type-safe code at compile-time, reducing casting and preventing runtime errors, along with an overview of Comparable and Comparator for sorting."
+    },
+    {
+      "id": "FILE001",
+      "title": "Basic File I/O",
+      "notes": "Covers fundamental file operations using java.nio.file.Path and Files for reading and writing small text files, including the handling of IOException."
+    },
+    {
+      "id": "MULT001",
+      "title": "Multithreading Concepts",
+      "notes": "Introduces threads as independent paths of execution, explains their use for concurrent tasks, and differentiates between Thread.start() and direct run() method calls."
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "What is an exception in Java?",
+      "back": "An object representing an unusual condition during program execution.",
+      "topic_id": "EXCP001"
+    },
+    {
+      "front": "What are the main keywords used for exception handling?",
+      "back": "try, catch, finally, throw, and throws.",
+      "topic_id": "EXCP001"
+    },
+    {
+      "front": "Differentiate between a checked and an unchecked exception.",
+      "back": "Checked exceptions must be caught or declared (e.g., IOException); unchecked exceptions are subclasses of RuntimeException and don't require explicit handling/declaration (e.g., NullPointerException).",
+      "topic_id": "EXCP001"
+    },
+    {
+      "front": "What is a List in Java Collections?",
+      "back": "An ordered collection that permits duplicate elements. Example: ArrayList.",
+      "topic_id": "COLL001"
+    },
+    {
+      "front": "What is a Set in Java Collections?",
+      "back": "A collection that stores only unique elements. Example: HashSet.",
+      "topic_id": "COLL001"
+    },
+    {
+      "front": "What is a Map in Java Collections?",
+      "back": "Stores key-value associations and is not a subtype of Collection. Example: HashMap.",
+      "topic_id": "COLL001"
+    },
+    {
+      "front": "What is the primary benefit of using generics in Java?",
+      "back": "Generics provide compile-time type safety, reduce the need for explicit casting, and catch type mistakes before execution.",
+      "topic_id": "GENS001"
+    },
+    {
+      "front": "Differentiate Comparable and Comparator.",
+      "back": "Comparable defines a natural ordering within a class using compareTo(); Comparator defines an external comparison rule, allowing multiple sorting orders.",
+      "topic_id": "GENS001"
+    },
+    {
+      "front": "Which Java package is commonly used for modern file handling?",
+      "back": "java.nio.file (specifically Path and Files).",
+      "topic_id": "FILE001"
+    },
+    {
+      "front": "What type of exception is typically associated with file operations?",
+      "back": "IOException (a checked exception).",
+      "topic_id": "FILE001"
+    },
+    {
+      "front": "What is a thread in Java?",
+      "back": "An independent path of execution within a process.",
+      "topic_id": "MULT001"
+    },
+    {
+      "front": "What is the difference between calling Thread.start() and Thread.run() directly?",
+      "back": "start() asks the JVM to run the task on a new thread; run() directly executes the method on the current thread.",
+      "topic_id": "MULT001"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Explain the purpose of the finally block in a try-catch-finally construct.",
+      "answer": "The finally block is used for cleanup code that must execute regardless of whether an exception occurred or was handled.",
+      "topic_id": "EXCP001"
+    },
+    {
+      "question": "When would you use throw versus throws?",
+      "answer": "throw is used to explicitly throw an exception object within a method body. throws is used in a method signature to declare that a method might throw certain checked exceptions.",
+      "topic_id": "EXCP001"
+    },
+    {
+      "question": "You need to store a list of names where duplicates are allowed and order matters for displaying. Which Collection type would you choose and why?",
+      "answer": "A List (e.g., ArrayList) because it is ordered and permits duplicates.",
+      "topic_id": "COLL001"
+    },
+    {
+      "question": "If you want to store unique user IDs and quickly check for existence, which Collection type is most suitable?",
+      "answer": "A Set (e.g., HashSet) because it stores unique elements and provides efficient lookup.",
+      "topic_id": "COLL001"
+    },
+    {
+      "question": "How does a Map differ from a Collection in Java's Collections Framework?",
+      "answer": "A Map stores key-value pairs and is not a direct subtype of Collection. Collection represents a group of objects, whereas Map represents a mapping from keys to values.",
+      "topic_id": "COLL001"
+    },
+    {
+      "question": "Describe how generics help prevent ClassCastException at runtime.",
+      "answer": "Generics enforce type checks at compile-time. If a program attempts to add an incorrect type to a generic collection (e.g., an Integer to List<String>), the compiler will flag it as an error, preventing a runtime ClassCastException.",
+      "topic_id": "GENS001"
+    },
+    {
+      "question": "You want to read the entire content of a small text file into a String. Which class and method from java.nio.file would you use?",
+      "answer": "You would use the Files class and its readString(Path path) method.",
+      "topic_id": "FILE001"
+    },
+    {
+      "question": "Why is it important to handle IOException when performing file operations?",
+      "answer": "IOException is a checked exception, meaning the compiler requires it to be caught or declared. This ensures that potential issues during file operations (like file not found, permission denied, etc.) are explicitly addressed by the programmer.",
+      "topic_id": "FILE001"
+    },
+    {
+      "question": "What is the purpose of the Runnable interface in multithreading?",
+      "answer": "The Runnable interface defines a single run() method, which contains the code that will be executed by a thread. It allows defining a task without extending the Thread class.",
+      "topic_id": "MULT001"
+    },
+    {
+      "question": "What potential issue arises when multiple threads access and modify the same shared data?",
+      "answer": "Race conditions, data corruption, or inconsistent results due to lack of proper synchronization and coordination between threads.",
+      "topic_id": "MULT001"
+    }
+  ]
+}

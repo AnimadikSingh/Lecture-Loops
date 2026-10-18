@@ -31,6 +31,14 @@
       "topic_count": 6,
       "flashcard_count": 16,
       "quiz_count": 11
+    },
+    {
+      "id": "java-continuation-part-3",
+      "title": "Java Programming: Continuation (Part 3)",
+      "file": "java-continuation-part-3.json",
+      "topic_count": 5,
+      "flashcard_count": 12,
+      "quiz_count": 10
     }
   ]
 }

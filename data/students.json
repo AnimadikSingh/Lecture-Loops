@@ -238,13 +238,59 @@
           "next_review_at": "2026-10-18T13:30:27.211429+00:00",
           "last_question": "Why can't a `static` method directly access a non-`static` (instance) field without an object reference?",
           "last_answer": "A static method belongs to the class itself and exists even if no objects of the class have been created. Instance fields belong to specific objects, so without an object reference, a static method wouldn't know which instance's field to access."
+        },
+        "java-continuation-part-3:EXCP001": {
+          "title": "Exception Handling in Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:42:02.562585+00:00",
+          "last_question": "When would you use throw versus throws?",
+          "last_answer": "throw is used to explicitly throw an exception object within a method body. throws is used in a method signature to declare that a method might throw certain checked exceptions."
+        },
+        "java-continuation-part-3:COLL001": {
+          "title": "Java Collections Framework",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:42:02.562585+00:00",
+          "last_question": "How does a Map differ from a Collection in Java's Collections Framework?",
+          "last_answer": "A Map stores key-value pairs and is not a direct subtype of Collection. Collection represents a group of objects, whereas Map represents a mapping from keys to values."
+        },
+        "java-continuation-part-3:GENS001": {
+          "title": "Generics and Type Safety",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:42:02.562585+00:00",
+          "last_question": "Describe how generics help prevent ClassCastException at runtime.",
+          "last_answer": "Generics enforce type checks at compile-time. If a program attempts to add an incorrect type to a generic collection (e.g., an Integer to List<String>), the compiler will flag it as an error, preventing a runtime ClassCastException."
+        },
+        "java-continuation-part-3:FILE001": {
+          "title": "Basic File I/O",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:42:02.562585+00:00",
+          "last_question": "Why is it important to handle IOException when performing file operations?",
+          "last_answer": "IOException is a checked exception, meaning the compiler requires it to be caught or declared. This ensures that potential issues during file operations (like file not found, permission denied, etc.) are explicitly addressed by the programmer."
+        },
+        "java-continuation-part-3:MULT001": {
+          "title": "Multithreading Concepts",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:42:02.562585+00:00",
+          "last_question": "What potential issue arises when multiple threads access and modify the same shared data?",
+          "last_answer": "Race conditions, data corruption, or inconsistent results due to lack of proper synchronization and coordination between threads."
         }
       },
       "courses": [
         "dbms-unit-1",
         "java-introduction-5-pages",
         "java_intro",
-        "java-continuation-part-2"
+        "java-continuation-part-2",
+        "java-continuation-part-3"
       ],
       "active_revision": "dbms-unit-1:functional-dependency"
     }
