@@ -19,7 +19,7 @@
           "attempts": 0,
           "correct": 0,
           "difficulty": "medium",
-          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "next_review_at": "2026-10-19T12:27:55.455987+00:00",
           "last_question": "What is the result of organizing data through normalization?",
           "last_answer": "Reduced duplication and improved data integrity."
         },
@@ -62,8 +62,9 @@
       },
       "courses": [
         "dbms-unit-1"
-      ]
+      ],
+      "active_revision": "dbms-unit-1:normalization-overview"
     }
   ],
-  "telegram_offset": 870593874
+  "telegram_offset": 870593876
 }
