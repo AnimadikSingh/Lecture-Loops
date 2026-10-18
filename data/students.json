@@ -13,8 +13,56 @@
           "next_review_at": "2026-10-19T09:00:00+05:30",
           "last_question": "What is the difference between partial and transitive dependency?",
           "last_answer": "A partial dependency is a non-key attribute depending on part of a composite key; a transitive dependency is a non-key attribute depending on another non-key attribute."
+        },
+        "dbms-unit-1:normalization-overview": {
+          "title": "Database Normalization Overview",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "last_question": "What is the result of organizing data through normalization?",
+          "last_answer": "Reduced duplication and improved data integrity."
+        },
+        "dbms-unit-1:functional-dependency": {
+          "title": "Functional Dependency",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "last_question": "If an attribute 'A' determines attribute 'B', what term describes this relationship?",
+          "last_answer": "Functional dependency."
+        },
+        "dbms-unit-1:first-normal-form": {
+          "title": "First Normal Form (1NF)",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "last_question": "To achieve First Normal Form, what must be true about the values in each column?",
+          "last_answer": "Values must be atomic."
+        },
+        "dbms-unit-1:second-normal-form": {
+          "title": "Second Normal Form (2NF)",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "last_question": "Which normal form comes after 1NF and addresses partial dependencies?",
+          "last_answer": "Second Normal Form (2NF)."
+        },
+        "dbms-unit-1:third-normal-form": {
+          "title": "Third Normal Form (3NF)",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "last_question": "Which normal form removes transitive dependencies, building upon 2NF?",
+          "last_answer": "Third Normal Form (3NF)."
         }
-      }
+      },
+      "courses": [
+        "dbms-unit-1"
+      ]
     }
   ],
   "telegram_offset": 870593874

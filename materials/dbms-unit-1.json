@@ -1,135 +1,140 @@
 {
   "title": "Database Normalization Fundamentals",
-  "summary": "Database normalization is a process designed to organize data in a database to reduce redundancy and improve data integrity. It involves adhering to various normal forms, starting with First Normal Form (1NF) that addresses atomic values and repeating groups, followed by Second Normal Form (2NF) which eliminates partial dependencies, and Third Normal Form (3NF) that tackles transitive dependencies. Functional dependencies are a core concept underlying these normalization rules.",
+  "summary": "This content introduces database normalization, a process to organize data for reduced duplication and improved integrity. It defines functional dependency and outlines the requirements for First, Second, and Third Normal Forms, each addressing specific types of dependencies.",
   "topics": [
     {
-      "id": "dbms-unit-1-t1",
-      "title": "Database Normalization",
+      "id": "normalization-overview",
+      "title": "Database Normalization Overview",
       "notes": "Organizes data to reduce duplication and improve data integrity."
     },
     {
-      "id": "dbms-unit-1-t2",
+      "id": "functional-dependency",
       "title": "Functional Dependency",
       "notes": "Occurs when one attribute determines another attribute."
     },
     {
-      "id": "dbms-unit-1-t3",
+      "id": "first-normal-form",
       "title": "First Normal Form (1NF)",
       "notes": "Requires atomic values and no repeating groups."
     },
     {
-      "id": "dbms-unit-1-t4",
+      "id": "second-normal-form",
       "title": "Second Normal Form (2NF)",
       "notes": "Removes partial dependencies."
     },
     {
-      "id": "dbms-unit-1-t5",
+      "id": "third-normal-form",
       "title": "Third Normal Form (3NF)",
       "notes": "Removes transitive dependencies."
     }
   ],
   "flashcards": [
     {
-      "front": "What is the primary goal of database normalization?",
+      "front": "What is the primary purpose of database normalization?",
       "back": "To organize data to reduce duplication and improve data integrity.",
-      "topic_id": "dbms-unit-1-t1"
+      "topic_id": "normalization-overview"
     },
     {
       "front": "Define a functional dependency.",
-      "back": "A functional dependency occurs when one attribute determines another attribute.",
-      "topic_id": "dbms-unit-1-t2"
+      "back": "It occurs when one attribute determines another attribute.",
+      "topic_id": "functional-dependency"
     },
     {
-      "front": "What are the two main requirements for First Normal Form (1NF)?",
+      "front": "What are the two key requirements for First Normal Form (1NF)?",
       "back": "Atomic values and no repeating groups.",
-      "topic_id": "dbms-unit-1-t3"
+      "topic_id": "first-normal-form"
     },
     {
-      "front": "Which type of dependency does Second Normal Form (2NF) address?",
+      "front": "Which normal form requires atomic values?",
+      "back": "First Normal Form (1NF).",
+      "topic_id": "first-normal-form"
+    },
+    {
+      "front": "What structural issue does First Normal Form (1NF) aim to eliminate?",
+      "back": "Repeating groups.",
+      "topic_id": "first-normal-form"
+    },
+    {
+      "front": "What type of dependency does Second Normal Form (2NF) remove?",
       "back": "Partial dependencies.",
-      "topic_id": "dbms-unit-1-t4"
+      "topic_id": "second-normal-form"
     },
     {
-      "front": "Which type of dependency does Third Normal Form (3NF) address?",
+      "front": "What type of dependency does Third Normal Form (3NF) remove?",
       "back": "Transitive dependencies.",
-      "topic_id": "dbms-unit-1-t5"
+      "topic_id": "third-normal-form"
     },
     {
-      "front": "How does normalization benefit data integrity?",
-      "back": "By reducing redundancy, it minimizes the chances of inconsistencies and errors.",
-      "topic_id": "dbms-unit-1-t1"
+      "front": "If a database is in 2NF, what has been addressed?",
+      "back": "Partial dependencies have been removed.",
+      "topic_id": "second-normal-form"
     },
     {
-      "front": "What does 'atomic values' mean in 1NF?",
-      "back": "Each cell in a table must contain a single, indivisible value.",
-      "topic_id": "dbms-unit-1-t3"
+      "front": "If a database is in 3NF, what has been addressed?",
+      "back": "Transitive dependencies have been removed.",
+      "topic_id": "third-normal-form"
     },
     {
-      "front": "What is a 'repeating group' that 1NF prohibits?",
-      "back": "Multiple values for a single attribute within the same row.",
-      "topic_id": "dbms-unit-1-t3"
-    },
-    {
-      "front": "When does a partial dependency occur?",
-      "back": "When a non-key attribute depends on only a part of a composite primary key.",
-      "topic_id": "dbms-unit-1-t4"
-    },
-    {
-      "front": "When does a transitive dependency occur?",
-      "back": "When a non-key attribute depends on another non-key attribute.",
-      "topic_id": "dbms-unit-1-t5"
+      "front": "What does database normalization aim to improve regarding data quality?",
+      "back": "Data integrity.",
+      "topic_id": "normalization-overview"
     }
   ],
   "quiz": [
     {
-      "question": "What is the overarching purpose of database normalization?",
-      "answer": "To reduce data redundancy and improve data integrity.",
-      "topic_id": "dbms-unit-1-t1"
+      "question": "What two main problems does database normalization aim to solve?",
+      "answer": "To reduce duplication and improve data integrity.",
+      "topic_id": "normalization-overview"
     },
     {
-      "question": "Explain what a functional dependency implies between attributes.",
-      "answer": "A functional dependency means that one attribute uniquely determines the value of another attribute.",
-      "topic_id": "dbms-unit-1-t2"
+      "question": "Explain what a functional dependency signifies.",
+      "answer": "A functional dependency occurs when one attribute determines another attribute.",
+      "topic_id": "functional-dependency"
     },
     {
-      "question": "What are the two fundamental requirements for a table to satisfy First Normal Form (1NF)?",
-      "answer": "All values must be atomic (indivisible) and there should be no repeating groups.",
-      "topic_id": "dbms-unit-1-t3"
+      "question": "What are the two conditions for a table to be in First Normal Form?",
+      "answer": "It must have atomic values and no repeating groups.",
+      "topic_id": "first-normal-form"
     },
     {
-      "question": "Which specific type of dependency is eliminated when a database is in Second Normal Form (2NF)?",
+      "question": "Which normal form is concerned with eliminating repeating groups?",
+      "answer": "First Normal Form.",
+      "topic_id": "first-normal-form"
+    },
+    {
+      "question": "What type of dependencies does Second Normal Form (2NF) explicitly remove?",
       "answer": "Partial dependencies.",
-      "topic_id": "dbms-unit-1-t4"
+      "topic_id": "second-normal-form"
     },
     {
-      "question": "What kind of dependency is removed by achieving Third Normal Form (3NF)?",
+      "question": "What specific type of dependency is removed by Third Normal Form (3NF)?",
       "answer": "Transitive dependencies.",
-      "topic_id": "dbms-unit-1-t5"
+      "topic_id": "third-normal-form"
     },
     {
-      "question": "Why is reducing data duplication a key benefit of normalization?",
-      "answer": "It saves storage space and minimizes the risk of data inconsistencies.",
-      "topic_id": "dbms-unit-1-t1"
+      "question": "If an attribute 'A' determines attribute 'B', what term describes this relationship?",
+      "answer": "Functional dependency.",
+      "topic_id": "functional-dependency"
     },
     {
-      "question": "If a table contains a column with multiple phone numbers stored as a comma-separated list, which normal form is violated?",
-      "answer": "First Normal Form (1NF) due to non-atomic values.",
-      "topic_id": "dbms-unit-1-t3"
+      "question": "What is the result of organizing data through normalization?",
+      "answer": "Reduced duplication and improved data integrity.",
+      "topic_id": "normalization-overview"
     },
     {
-      "question": "Consider a table with a composite primary key (OrderID, ProductID). If 'ProductName' depends only on 'ProductID', which normal form is violated?",
-      "answer": "Second Normal Form (2NF) due to a partial dependency.",
-      "topic_id": "dbms-unit-1-t4"
+      "question": "To achieve First Normal Form, what must be true about the values in each column?",
+      "answer": "Values must be atomic.",
+      "topic_id": "first-normal-form"
     },
     {
-      "question": "If a table has 'EmployeeID', 'DepartmentName', and 'DepartmentLocation', and 'EmployeeID' determines 'DepartmentName', and 'DepartmentName' determines 'DepartmentLocation', which normal form is violated?",
-      "answer": "Third Normal Form (3NF) due to a transitive dependency.",
-      "topic_id": "dbms-unit-1-t5"
+      "question": "Which normal form comes after 1NF and addresses partial dependencies?",
+      "answer": "Second Normal Form (2NF).",
+      "topic_id": "second-normal-form"
     },
     {
-      "question": "What is the primary difference between a partial dependency and a transitive dependency?",
-      "answer": "A partial dependency is when a non-key attribute depends on only part of a composite key, while a transitive dependency is when a non-key attribute depends on another non-key attribute.",
-      "topic_id": "dbms-unit-1-t4"
+      "question": "Which normal form removes transitive dependencies, building upon 2NF?",
+      "answer": "Third Normal Form (3NF).",
+      "topic_id": "third-normal-form"
     }
   ]
 }

@@ -1,3 +1,12 @@
 {
-  "courses": []
+  "courses": [
+    {
+      "id": "dbms-unit-1",
+      "title": "Database Normalization Fundamentals",
+      "file": "dbms-unit-1.json",
+      "topic_count": 5,
+      "flashcard_count": 10,
+      "quiz_count": 11
+    }
+  ]
 }
