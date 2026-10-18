@@ -16,19 +16,19 @@
         },
         "dbms-unit-1:normalization-overview": {
           "title": "Database Normalization Overview",
-          "attempts": 0,
+          "attempts": 1,
           "correct": 0,
           "difficulty": "medium",
-          "next_review_at": "2026-10-19T12:27:55.455987+00:00",
-          "last_question": "What is the result of organizing data through normalization?",
-          "last_answer": "Reduced duplication and improved data integrity."
+          "next_review_at": "2026-10-19T12:29:53.587748+00:00",
+          "last_question": "What two main problems does database normalization aim to solve?",
+          "last_answer": "To reduce duplication and improve data integrity."
         },
         "dbms-unit-1:functional-dependency": {
           "title": "Functional Dependency",
           "attempts": 0,
           "correct": 0,
           "difficulty": "medium",
-          "next_review_at": "2026-10-18T12:26:32.899833+00:00",
+          "next_review_at": "2026-10-19T12:29:58.895679+00:00",
           "last_question": "If an attribute 'A' determines attribute 'B', what term describes this relationship?",
           "last_answer": "Functional dependency."
         },
@@ -63,8 +63,8 @@
       "courses": [
         "dbms-unit-1"
       ],
-      "active_revision": "dbms-unit-1:normalization-overview"
+      "active_revision": "dbms-unit-1:functional-dependency"
     }
   ],
-  "telegram_offset": 870593876
+  "telegram_offset": 870593880
 }
