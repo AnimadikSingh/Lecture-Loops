@@ -7,19 +7,23 @@ from pathlib import Path
 from typing import Any
 
 from .content import assess_answer, extract_source, generate_materials
+from .materials import read_catalog, read_material, sync_student_topics, update_catalog
 from .models import TopicPerformance
 from .scheduler import mastery_label, next_review_at
 from .store import due_revisions, find_student, read_json, write_json
 from .telegram import TelegramClient
 
 
-def ingest(source_path: Path, course_id: str, output_path: Path) -> dict[str, Any]:
+def ingest(source_path: Path, course_id: str, output_path: Path, store_path: Path | None = None) -> dict[str, Any]:
     if not course_id.replace("-", "").replace("_", "").isalnum():
         raise ValueError("course_id may contain only letters, numbers, hyphens, and underscores")
     materials = generate_materials(extract_source(source_path), course_id)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     import json
     output_path.write_text(json.dumps(materials, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    update_catalog(output_path.parent, course_id, materials)
+    if store_path:
+        sync_student_topics(store_path, course_id, materials, datetime.now(timezone.utc))
     return materials
 
 
@@ -67,7 +71,46 @@ def update_topic_after_attempt(raw_topic: dict[str, Any], correct: bool, now: da
     return topic
 
 
-def process_updates(store_path: Path, token: str, now: datetime | None = None) -> int:
+def _course_id(argument: str, student: dict[str, Any], materials_dir: Path) -> str:
+    available = [item["id"] for item in read_catalog(materials_dir)]
+    allowed = [course for course in student.get("courses", available) if course in available]
+    if argument and argument in allowed:
+        return argument
+    if len(allowed) == 1:
+        return allowed[0]
+    raise ValueError("Choose a course: " + ", ".join(allowed or available))
+
+
+def _send_course_list(telegram: TelegramClient, chat_id: int, student: dict[str, Any], materials_dir: Path) -> None:
+    catalog = read_catalog(materials_dir)
+    courses = [item for item in catalog if item["id"] in student.get("courses", [entry["id"] for entry in catalog])]
+    if not courses:
+        telegram.send_message(chat_id, "No course material is available yet. Generate a lecture from GitHub Actions first.")
+        return
+    lines = ["Your courses:"]
+    lines.extend(f"- {item['title']} (`{item['id']}`): {item['flashcard_count']} cards, {item['quiz_count']} questions" for item in courses)
+    lines.append("\nUse /notes COURSE, /flashcards COURSE, or /quiz COURSE.")
+    telegram.send_message(chat_id, "\n".join(lines))
+
+
+def _handle_flashcard_callback(telegram: TelegramClient, callback: dict[str, Any], student: dict[str, Any], materials_dir: Path) -> bool:
+    parts = str(callback.get("data", "")).split("|")
+    if len(parts) != 4 or parts[0] != "card":
+        return False
+    _, course_id, raw_index, action = parts
+    if course_id not in student.get("courses", [course_id]):
+        return False
+    material = read_material(materials_dir, course_id)
+    cards = material.get("flashcards", [])
+    index = int(raw_index)
+    if not 0 <= index < len(cards):
+        return False
+    telegram.answer_callback(str(callback["id"]))
+    telegram.send_flashcard(callback["message"]["chat"]["id"], course_id, index, cards[index], len(cards), answer=action == "reveal")
+    return True
+
+
+def process_updates(store_path: Path, token: str, materials_dir: Path = Path("materials"), now: datetime | None = None) -> int:
     """Handle only /start and /status. Grading can be added behind an authenticated webhook later."""
     now = now or datetime.now(timezone.utc)
     data = read_json(store_path)
@@ -76,14 +119,62 @@ def process_updates(store_path: Path, token: str, now: datetime | None = None) -
     next_offset = int(data.get("telegram_offset", 0))
     for update in telegram.updates(next_offset):
         next_offset = max(next_offset, int(update["update_id"]) + 1)
+        callback = update.get("callback_query")
+        if callback:
+            chat_id = str(callback.get("message", {}).get("chat", {}).get("id", ""))
+            student = find_student(data, chat_id)
+            if student and _handle_flashcard_callback(telegram, callback, student, materials_dir):
+                handled += 1
+            continue
         message = update.get("message", {})
         chat = message.get("chat", {})
         command = str(message.get("text", "")).strip().split(maxsplit=1)[0].lower()
         student = find_student(data, str(chat.get("id", "")))
         if not student:
             continue
+        argument = str(message.get("text", "")).strip().partition(" ")[2].strip()
         if command == "/start":
-            telegram.send_message(chat["id"], "LectureLoop is connected. Use /status to see your current revision priorities.")
+            telegram.send_message(chat["id"], "LectureLoop is connected. Use /courses to open notes, flashcards, and quizzes; /status shows revision priorities.")
+            handled += 1
+        elif command in {"/help", "/courses"}:
+            _send_course_list(telegram, chat["id"], student, materials_dir)
+            handled += 1
+        elif command == "/notes":
+            try:
+                material = read_material(materials_dir, _course_id(argument, student, materials_dir))
+                text = f"{material['title']} - Notes\n\n{material['summary']}\n\n" + "\n\n".join(f"{topic['title']}\n{topic['notes']}" for topic in material["topics"])
+                telegram.send_message(chat["id"], text)
+            except ValueError as exc:
+                telegram.send_message(chat["id"], str(exc))
+            handled += 1
+        elif command == "/flashcards":
+            try:
+                course_id = _course_id(argument, student, materials_dir)
+                material = read_material(materials_dir, course_id)
+                cards = material.get("flashcards", [])
+                if not cards:
+                    raise ValueError("This course has no flashcards yet.")
+                telegram.send_flashcard(chat["id"], course_id, 0, cards[0], len(cards))
+            except ValueError as exc:
+                telegram.send_message(chat["id"], str(exc))
+            handled += 1
+        elif command == "/quiz":
+            try:
+                course_id = _course_id(argument, student, materials_dir)
+                material = read_material(materials_dir, course_id)
+                questions = material.get("quiz", [])
+                if not questions:
+                    raise ValueError("This course has no quiz questions yet.")
+                item = questions[0]
+                topic_key = f"{course_id}:{item['topic_id']}"
+                raw_topic = student["topics"].get(topic_key)
+                if not raw_topic:
+                    raise ValueError("Run the material-generation workflow again to prepare this student's quiz topics.")
+                raw_topic["last_question"], raw_topic["last_answer"] = item["question"], item["answer"]
+                student["active_revision"] = topic_key
+                telegram.send_message(chat["id"], f"Quiz: {item['question']}\n\nReply with your answer and I will grade it.")
+            except ValueError as exc:
+                telegram.send_message(chat["id"], str(exc))
             handled += 1
         elif command == "/status":
             lines = ["Your LectureLoop priorities"]

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LectureLoop Study Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LECTURELOOP</p>
+        <h1>Study dashboard</h1>
+      </div>
+      <p class="status" id="status">Loading your study material…</p>
+    </header>
+    <main>
+      <section class="course-picker" aria-label="Course selection">
+        <label for="course-select">Choose a course</label>
+        <select id="course-select" disabled>
+          <option>Loading…</option>
+        </select>
+      </section>
+      <nav class="tabs" aria-label="Study material">
+        <button class="tab is-active" data-view="notes" type="button">Notes</button>
+        <button class="tab" data-view="cards" type="button">Flashcards</button>
+        <button class="tab" data-view="quiz" type="button">Practice quiz</button>
+      </nav>
+      <section id="content" aria-live="polite"></section>
+    </main>
+    <template id="empty-template">
+      <section class="empty-state">
+        <h2>No study material yet</h2>
+        <p>Run the “LectureLoop material agent” in GitHub Actions with a lecture transcript or text-based PDF. This dashboard will update after the Pages workflow finishes.</p>
+      </section>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>

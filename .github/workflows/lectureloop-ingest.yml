@@ -27,12 +27,12 @@ jobs:
       - name: Generate study material
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python -m lectureloop.cli ingest --course "${{ inputs.course_id }}" --source "${{ inputs.source_path }}" --output "materials/${{ inputs.course_id }}.json"
+        run: python -m lectureloop.cli ingest --course "${{ inputs.course_id }}" --source "${{ inputs.source_path }}" --output "materials/${{ inputs.course_id }}.json" --store data/students.json
       - name: Save generated study material
         run: |
           git config user.name "lectureloop-bot"
           git config user.email "lectureloop-bot@users.noreply.github.com"
-          git add materials/
+          git add materials/ data/students.json
           git diff --cached --quiet || git commit -m "docs: generate ${{ inputs.course_id }} study material"
           git push
 

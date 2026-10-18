@@ -20,6 +20,7 @@ The implementation follows the brief's review policy exactly:
 
 - `.github/workflows/lectureloop-ingest.yml`: manually run this Action with a committed transcript or text-based PDF. Gemini returns schema-constrained notes, flashcards, and short-answer quiz items in `materials/<course>.json`.
 - `.github/workflows/lectureloop-revision.yml`: runs every 15 minutes, reads Telegram commands and answers, sends due revision prompts, then persists the Telegram cursor, outcome, and next review dates.
+- `dashboard/`: a GitHub Pages study dashboard for generated notes, click-to-reveal flashcards, and quiz answers.
 - `lectureloop/`: small testable agent modules for extraction, model output validation, scheduling, JSON state, and Telegram communication.
 
 ## Setup
@@ -29,7 +30,39 @@ The implementation follows the brief's review policy exactly:
 3. Add repository Action secrets named `GEMINI_API_KEY` and `TELEGRAM_BOT_TOKEN`. Never place either in a committed file.
 4. Copy `data/students.example.json` to `data/students.json`, replace the sample chat ID with the student’s chat ID, and commit it only in a private repository. For a production or multi-user system, replace `lectureloop.store` with a database rather than committing learner data.
 5. Commit a transcript (`.txt`/`.md`) or a text-based slide PDF. In **Actions**, run **LectureLoop material agent**, enter the course id and source path. Review the generated JSON before sharing it with students.
-6. The **LectureLoop revision agent** starts sending reminders when a topic's `next_review_at` becomes due. Students can send `/start`, `/status`, or reply to a delivered question. Gemini grades the reply against its stored reference answer, updates the topic's accuracy, and reschedules it.
+6. The **LectureLoop revision agent** starts sending reminders when a topic's `next_review_at` becomes due. Students can use `/courses`, `/notes COURSE`, `/flashcards COURSE`, `/quiz COURSE`, `/start`, and `/status`; clicking a flashcard reveals its answer directly in Telegram. Gemini grades quiz or revision replies, updates topic accuracy, and reschedules the topic.
+
+## Add more study material
+
+Keep one lecture transcript or readable slide PDF per file in `lectures/`. For example:
+
+```text
+lectures/dbms-unit-1.txt
+lectures/dbms-unit-2.pdf
+lectures/os-processes.txt
+```
+
+Commit and push each new source file, then run **LectureLoop material agent** with its matching course id and source path. The agent updates the course catalog, creates the material JSON, and adds those topics to every configured student automatically. It is safe to re-run a course when the lecture file is improved.
+
+## Study in Telegram
+
+After a scheduled or manually run revision workflow processes `/start`, use:
+
+```text
+/courses
+/notes dbms-unit-1
+/flashcards dbms-unit-1
+/quiz dbms-unit-1
+/status
+```
+
+Flashcards have Telegram buttons for revealing an answer and moving to the next card. `/quiz` sends one question; reply normally to have the answer assessed and the revision date updated.
+
+## Publish the dashboard
+
+The **Publish LectureLoop dashboard** workflow deploys notes, flashcards, and quiz answers to GitHub Pages. It deliberately publishes only `dashboard/` and `materials/`, never `data/students.json` or secrets.
+
+In GitHub, open **Settings → Pages**, set **Source** to **GitHub Actions**, then run the dashboard workflow once. Its deployment result contains the dashboard URL. Keep the repository private, or only publish materials that are safe for public viewing.
 
 ## Local check
 

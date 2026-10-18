@@ -40,8 +40,34 @@ class TelegramClient:
         self.send_message(chat_id, text)
 
     def send_message(self, chat_id: str | int, text: str) -> None:
-        self._post("sendMessage", {"chat_id": chat_id, "text": text})
+        for part in _message_chunks(text):
+            self._post("sendMessage", {"chat_id": chat_id, "text": part})
+
+    def send_flashcard(self, chat_id: str | int, course_id: str, index: int, card: dict[str, Any], total: int, answer: bool = False) -> None:
+        text = f"Flashcard {index + 1}/{total}\n\nQ: {card['front']}"
+        if answer:
+            text += f"\n\nA: {card['back']}"
+        buttons = [] if answer else [{"text": "Reveal answer", "callback_data": f"card|{course_id}|{index}|reveal"}]
+        buttons.append({"text": "Next card", "callback_data": f"card|{course_id}|{(index + 1) % total}|show"})
+        self._post("sendMessage", {"chat_id": chat_id, "text": text, "reply_markup": {"inline_keyboard": [buttons]}})
+
+    def answer_callback(self, callback_id: str) -> None:
+        self._post("answerCallbackQuery", {"callback_query_id": callback_id})
 
     def updates(self, offset: int) -> list[dict[str, Any]]:
-        return self._post("getUpdates", {"offset": offset, "timeout": 0, "allowed_updates": ["message"]})
+        return self._post("getUpdates", {"offset": offset, "timeout": 0, "allowed_updates": ["message", "callback_query"]})
+
+
+def _message_chunks(text: str, limit: int = 4000) -> list[str]:
+    """Telegram caps messages at 4096 characters; preserve line boundaries where possible."""
+    if len(text) <= limit:
+        return [text]
+    chunks: list[str] = []
+    remaining = text
+    while remaining:
+        cut = remaining.rfind("\n", 0, limit)
+        cut = cut if cut > 0 else limit
+        chunks.append(remaining[:cut])
+        remaining = remaining[cut:].lstrip("\n")
+    return chunks
 
