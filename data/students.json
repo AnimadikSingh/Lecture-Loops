@@ -184,12 +184,67 @@
           "next_review_at": "2026-10-18T13:02:11.329856+00:00",
           "last_question": "Name two good programming practices mentioned in the lecture.",
           "last_answer": "Choose meaningful names, indent code consistently, use comments to explain 'why', validate input, prefer clear solutions, test thoroughly, use version control. (Any two of these)"
+        },
+        "java-continuation-part-2:method-basics": {
+          "title": "Methods in Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:30:27.211429+00:00",
+          "last_question": "Why is changing only the return type not sufficient for method overloading?",
+          "last_answer": "Method overloading requires differences in the number, types, or order of parameters. The return type alone does not differentiate the method signature for the compiler."
+        },
+        "java-continuation-part-2:strings-scanner": {
+          "title": "Strings and Keyboard Input",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:30:27.211429+00:00",
+          "last_question": "What is a common issue when mixing `nextInt()` and `nextLine()` with `Scanner`, and how can it be resolved?",
+          "last_answer": "`nextInt()` (and similar methods) leaves the line break character in the input buffer, which `nextLine()` might consume immediately, resulting in an empty string. This can be resolved by adding an extra `sc.nextLine()` call to consume the leftover line break."
+        },
+        "java-continuation-part-2:inheritance-poly": {
+          "title": "Inheritance and Polymorphism",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:30:27.211429+00:00",
+          "last_question": "What are the three main uses of the `final` keyword in Java related to classes, methods, and variables?",
+          "last_answer": "When applied to a class, it prevents inheritance. When applied to a method, it prevents overriding. When applied to a variable, it prevents reassignment (makes it a constant)."
+        },
+        "java-continuation-part-2:abstract-interfaces": {
+          "title": "Abstract Classes and Interfaces",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:30:27.211429+00:00",
+          "last_question": "Can a Java class implement multiple interfaces? If so, what does this allow?",
+          "last_answer": "Yes, a class can implement multiple interfaces. This allows the class to adhere to multiple distinct contracts, gaining different sets of shared capabilities."
+        },
+        "java-continuation-part-2:access-modifiers": {
+          "title": "Access Modifiers",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:30:27.211429+00:00",
+          "last_question": "Describe the access level provided by the `protected` modifier.",
+          "last_answer": "`protected` members are accessible within the same package and also by subclasses (through inheritance), even if those subclasses are in different packages."
+        },
+        "java-continuation-part-2:packages-static": {
+          "title": "Packages and Static Members",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T13:30:27.211429+00:00",
+          "last_question": "Why can't a `static` method directly access a non-`static` (instance) field without an object reference?",
+          "last_answer": "A static method belongs to the class itself and exists even if no objects of the class have been created. Instance fields belong to specific objects, so without an object reference, a static method wouldn't know which instance's field to access."
         }
       },
       "courses": [
         "dbms-unit-1",
         "java-introduction-5-pages",
-        "java_intro"
+        "java_intro",
+        "java-continuation-part-2"
       ],
       "active_revision": "dbms-unit-1:functional-dependency"
     }

@@ -1,0 +1,175 @@
+{
+  "title": "Java Programming - Part 2: Continuation",
+  "summary": "This module covers essential Java concepts including methods (basics and overloading), String manipulation, keyboard input using Scanner, object-oriented principles like inheritance and polymorphism, abstract classes and interfaces, access modifiers, packages, and static members. It serves as a continuation to foundational Java programming.",
+  "topics": [
+    {
+      "id": "method-basics",
+      "title": "Methods in Java",
+      "notes": "A method is a named block of code performing a task. It can accept parameters and return values. 'void' indicates no return value. Method overloading allows the same method name with different parameter lists."
+    },
+    {
+      "id": "strings-scanner",
+      "title": "Strings and Keyboard Input",
+      "notes": "String objects are immutable. Use methods like length(), toUpperCase(), charAt(), contains(). Compare String contents with equals(), not ==. Scanner is used for reading keyboard input (nextInt(), nextLine(), etc.). Be mindful of line breaks with nextInt() and nextLine()."
+    },
+    {
+      "id": "inheritance-poly",
+      "title": "Inheritance and Polymorphism",
+      "notes": "Inheritance allows child classes to reuse parent members using 'extends'. 'super' calls parent members/constructors. 'this' refers to the current object. 'final' prevents reassignment, overriding, or inheritance. Polymorphism allows a parent-type reference to point to a child object, executing overridden methods based on the actual object."
+    },
+    {
+      "id": "abstract-interfaces",
+      "title": "Abstract Classes and Interfaces",
+      "notes": "An abstract class cannot be instantiated directly and can have both implemented and abstract methods. An interface defines a contract for implementing classes, allowing multiple implementations. Interfaces can include default and static methods."
+    },
+    {
+      "id": "access-modifiers",
+      "title": "Access Modifiers",
+      "notes": "Java access modifiers control visibility: 'public' (broadly accessible), 'private' (only in declaring class), 'protected' (same package and through inheritance), 'package-private' (no modifier, same package only)."
+    },
+    {
+      "id": "packages-static",
+      "title": "Packages and Static Members",
+      "notes": "Packages group related classes and prevent naming conflicts. 'import' statements allow simple name references. The 'static' keyword marks a member that belongs to the class, not an object. Static methods cannot directly access instance fields."
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "What is the purpose of a method in Java?",
+      "back": "A method is a named block of code that performs a task, reduces repetition, and breaks down large problems.",
+      "topic_id": "method-basics"
+    },
+    {
+      "front": "What does the 'void' keyword signify in a method signature?",
+      "back": "It means the method does not return any value.",
+      "topic_id": "method-basics"
+    },
+    {
+      "front": "What is method overloading?",
+      "back": "Using the same method name with different parameter lists (different number, types, or order of parameters).",
+      "topic_id": "method-basics"
+    },
+    {
+      "front": "Are String objects mutable or immutable in Java?",
+      "back": "Immutable; operations produce new strings rather than changing the original object.",
+      "topic_id": "strings-scanner"
+    },
+    {
+      "front": "How do you correctly compare the content of two String objects?",
+      "back": "Use the `equals()` method (e.g., `string1.equals(string2)`).",
+      "topic_id": "strings-scanner"
+    },
+    {
+      "front": "What Java class is used for reading keyboard input from the console?",
+      "back": "`java.util.Scanner`.",
+      "topic_id": "strings-scanner"
+    },
+    {
+      "front": "Which keyword is used to declare class inheritance in Java?",
+      "back": "`extends`.",
+      "topic_id": "inheritance-poly"
+    },
+    {
+      "front": "What is the function of the `super` keyword?",
+      "back": "It refers to parent members or invokes a parent constructor.",
+      "topic_id": "inheritance-poly"
+    },
+    {
+      "front": "What is runtime polymorphism?",
+      "back": "When a parent-type reference points to a child object, and the overridden method is selected according to the actual object at runtime.",
+      "topic_id": "inheritance-poly"
+    },
+    {
+      "front": "Can an abstract class be instantiated directly?",
+      "back": "No, an abstract class cannot be instantiated directly.",
+      "topic_id": "abstract-interfaces"
+    },
+    {
+      "front": "What is the main purpose of an interface in Java?",
+      "back": "To define a contract that implementing classes must follow, enabling shared capabilities among different classes.",
+      "topic_id": "abstract-interfaces"
+    },
+    {
+      "front": "What is the access level of a `private` member?",
+      "back": "Accessible only inside the declaring class.",
+      "topic_id": "access-modifiers"
+    },
+    {
+      "front": "Describe 'package-private' access.",
+      "back": "It's the default access (no modifier) and means the member is generally accessible only within the same package.",
+      "topic_id": "access-modifiers"
+    },
+    {
+      "front": "What is the primary role of Java packages?",
+      "back": "To group related classes and help avoid naming conflicts.",
+      "topic_id": "packages-static"
+    },
+    {
+      "front": "What does the `static` keyword indicate about a class member?",
+      "back": "It indicates the member belongs to the class itself, rather than to an individual object instance.",
+      "topic_id": "packages-static"
+    },
+    {
+      "front": "Can a static method directly access instance fields?",
+      "back": "No, not without an object reference, as instance fields belong to objects, not the class.",
+      "topic_id": "packages-static"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Explain the difference between parameters and arguments in a method definition and call.",
+      "answer": "Parameters are the variables defined in the method's signature, acting as placeholders. Arguments are the actual values passed to the method when it is called.",
+      "topic_id": "method-basics"
+    },
+    {
+      "question": "Why is changing only the return type not sufficient for method overloading?",
+      "answer": "Method overloading requires differences in the number, types, or order of parameters. The return type alone does not differentiate the method signature for the compiler.",
+      "topic_id": "method-basics"
+    },
+    {
+      "question": "Why should you use `equals()` instead of `==` to compare the content of two String objects?",
+      "answer": "`==` checks if two references point to the exact same object in memory, while `equals()` compares the actual textual content of the strings. For content comparison, `equals()` is appropriate.",
+      "topic_id": "strings-scanner"
+    },
+    {
+      "question": "What is a common issue when mixing `nextInt()` and `nextLine()` with `Scanner`, and how can it be resolved?",
+      "answer": "`nextInt()` (and similar methods) leaves the line break character in the input buffer, which `nextLine()` might consume immediately, resulting in an empty string. This can be resolved by adding an extra `sc.nextLine()` call to consume the leftover line break.",
+      "topic_id": "strings-scanner"
+    },
+    {
+      "question": "How does a child class typically call a constructor of its parent class?",
+      "answer": "By using the `super(...)` keyword as the first statement within the child class's constructor.",
+      "topic_id": "inheritance-poly"
+    },
+    {
+      "question": "What are the three main uses of the `final` keyword in Java related to classes, methods, and variables?",
+      "answer": "When applied to a class, it prevents inheritance. When applied to a method, it prevents overriding. When applied to a variable, it prevents reassignment (makes it a constant).",
+      "topic_id": "inheritance-poly"
+    },
+    {
+      "question": "What is the key difference in when to use an abstract class versus an interface?",
+      "answer": "Use an abstract class when related classes need shared state or a common partial implementation. Use an interface when different classes need to share a capability or contract without implying a hierarchical relationship.",
+      "topic_id": "abstract-interfaces"
+    },
+    {
+      "question": "Can a Java class implement multiple interfaces? If so, what does this allow?",
+      "answer": "Yes, a class can implement multiple interfaces. This allows the class to adhere to multiple distinct contracts, gaining different sets of shared capabilities.",
+      "topic_id": "abstract-interfaces"
+    },
+    {
+      "question": "Describe the access level provided by the `protected` modifier.",
+      "answer": "`protected` members are accessible within the same package and also by subclasses (through inheritance), even if those subclasses are in different packages.",
+      "topic_id": "access-modifiers"
+    },
+    {
+      "question": "What is the primary benefit of using `import` statements in Java source files?",
+      "answer": "Import statements allow you to refer to classes by their simple names instead of their fully qualified names (including package), making code cleaner and easier to read.",
+      "topic_id": "packages-static"
+    },
+    {
+      "question": "Why can't a `static` method directly access a non-`static` (instance) field without an object reference?",
+      "answer": "A static method belongs to the class itself and exists even if no objects of the class have been created. Instance fields belong to specific objects, so without an object reference, a static method wouldn't know which instance's field to access.",
+      "topic_id": "packages-static"
+    }
+  ]
+}
