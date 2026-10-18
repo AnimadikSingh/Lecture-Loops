@@ -1,0 +1,205 @@
+{
+  "title": "Introduction to Java Programming",
+  "summary": "This beginner-friendly guide introduces Java, a high-level, general-purpose programming language. It covers Java's definition, key features like platform independence and object-orientation, and its widespread uses. The guide also explains the Java development workflow involving JDK, JRE, and JVM, demonstrates basic programming concepts such as variables, operators, and control flow, and delves into object-oriented principles, exception handling, and collections. It concludes with essential good programming practices for effective Java development.",
+  "topics": [
+    {
+      "id": "java-intro",
+      "title": "What Is Java?",
+      "notes": "Java is a high-level, general-purpose programming language developed at Sun Microsystems by James Gosling and released in 1995. It is maintained by Oracle and the Java community, widely used in enterprise, backend, financial, and Android development. Java is designed to be readable, structured, and manages memory automatically via garbage collection."
+    },
+    {
+      "id": "java-features",
+      "title": "Key Features of Java",
+      "notes": "Java is object-oriented, platform-independent (bytecode runs on JVM), readable, structured, and has automatic memory management (garbage collection). It also features robust and secure design (type checking, exception handling) and multithreading support for concurrent tasks."
+    },
+    {
+      "id": "java-workflow",
+      "title": "How Java Works: JDK, JRE, JVM, and Bytecode",
+      "notes": "JDK (Java Development Kit) provides tools for development, including the compiler. JRE (Java Runtime Environment) contains components to run Java applications. JVM (Java Virtual Machine) is the engine that executes Java bytecode, which is the intermediate instruction produced by the Java compiler (javac). This allows compiled Java programs to run on different operating systems with a compatible JVM."
+    },
+    {
+      "id": "java-fundamentals",
+      "title": "Java Fundamentals: Variables, Operators, Control Flow",
+      "notes": "Java is statically typed, using variables to store values (e.g., int, double, boolean, String). Operators perform calculations (+, -, *, /) and comparisons (==, !=, <, >). Decision-making statements like if/else and switch control program flow, while loops (for, while, do-while) repeat blocks of code."
+    },
+    {
+      "id": "java-oop",
+      "title": "Object-Oriented Programming (OOP) in Java",
+      "notes": "OOP organizes programs around classes and objects. A class defines structure/behavior, and an object is an instance of a class. Key principles are Encapsulation (bundling data and methods, controlling access), Abstraction (showing essentials, hiding details), Inheritance (reusing/specializing behavior), and Polymorphism (common type representing different implementations). Methods perform tasks, and constructors initialize new objects."
+    },
+    {
+      "id": "java-exceptions",
+      "title": "Exception Handling in Java",
+      "notes": "Exceptions are events that interrupt normal program flow. Java's try/catch blocks handle these errors, allowing programs to respond gracefully. The finally block is often used for cleanup regardless of whether an exception occurred. Checked exceptions must be handled or declared, while unchecked exceptions are typically programming errors."
+    },
+    {
+      "id": "java-collections",
+      "title": "Arrays and the Collections Framework",
+      "notes": "Arrays store a fixed number of elements of one type. The Collections Framework provides flexible data structures for objects, including List (e.g., ArrayList for ordered, duplicate-permitting lists), Set (for unique elements), and Map (for key-value pairs)."
+    },
+    {
+      "id": "java-practices",
+      "title": "Good Programming Practices",
+      "notes": "Best practices include choosing meaningful names, consistent indentation, using comments to explain decisions, validating input, handling exceptions thoughtfully, preferring simple solutions, testing thoroughly (normal, boundary, invalid cases), and using version control like Git."
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "What is Java?",
+      "back": "Java is a high-level, general-purpose, object-oriented programming language developed by Sun Microsystems.",
+      "topic_id": "java-intro"
+    },
+    {
+      "front": "Who led the development of Java at Sun Microsystems?",
+      "back": "James Gosling led the development of Java.",
+      "topic_id": "java-intro"
+    },
+    {
+      "front": "Explain 'platform-independent' in the context of Java.",
+      "back": "Java source code compiles into bytecode, which can run on any compatible Java Virtual Machine (JVM), regardless of the underlying operating system.",
+      "topic_id": "java-features"
+    },
+    {
+      "front": "What is the primary role of the Java Virtual Machine (JVM)?",
+      "back": "The JVM is the engine that loads and executes Java bytecode.",
+      "topic_id": "java-workflow"
+    },
+    {
+      "front": "What is bytecode in Java?",
+      "back": "Bytecode consists of intermediate instructions produced by the Java compiler (.class files) that are executed by the JVM.",
+      "topic_id": "java-workflow"
+    },
+    {
+      "front": "What is the difference between JDK and JRE?",
+      "back": "JDK (Java Development Kit) includes tools for developing Java programs (like the compiler), while JRE (Java Runtime Environment) contains components needed only to run Java applications.",
+      "topic_id": "java-workflow"
+    },
+    {
+      "front": "Name three common primitive data types in Java.",
+      "back": "int, double, boolean, char (others include byte, short, long, float).",
+      "topic_id": "java-fundamentals"
+    },
+    {
+      "front": "How do you declare an integer variable named 'score' and initialize it to 100?",
+      "back": "int score = 100;",
+      "topic_id": "java-fundamentals"
+    },
+    {
+      "front": "What is the purpose of an 'if/else' statement?",
+      "back": "An if/else statement selects which block of code to execute based on whether a specified condition is true or false.",
+      "topic_id": "java-fundamentals"
+    },
+    {
+      "front": "What is a 'class' in Object-Oriented Programming?",
+      "back": "A class defines the structure and behavior (blueprint) of a kind of object.",
+      "topic_id": "java-oop"
+    },
+    {
+      "front": "What is an 'object' in Object-Oriented Programming?",
+      "back": "An object is an instance of a class, with its own state and access to the class's methods.",
+      "topic_id": "java-oop"
+    },
+    {
+      "front": "Define 'Encapsulation' as an OOP principle.",
+      "back": "Encapsulation means bundling data and the methods that operate on that data within a single unit (e.g., a class), controlling access to protect internal state.",
+      "topic_id": "java-oop"
+    },
+    {
+      "front": "What is the role of a 'constructor' in Java?",
+      "back": "A constructor is a special method used to initialize a new object when it is created. It has the same name as its class and no return type.",
+      "topic_id": "java-oop"
+    },
+    {
+      "front": "How do you handle potential errors or 'exceptions' in Java?",
+      "back": "You use a try/catch block. Code that might throw an exception goes into the try block, and the catch block specifies how to handle a particular type of exception.",
+      "topic_id": "java-exceptions"
+    },
+    {
+      "front": "What is the key difference between a Java array and an ArrayList?",
+      "back": "An array has a fixed size determined at creation, while an ArrayList is a resizable dynamic collection.",
+      "topic_id": "java-collections"
+    },
+    {
+      "front": "What characteristic defines a Java 'Set' from the Collections Framework?",
+      "back": "A Set stores unique elements and does not allow duplicates.",
+      "topic_id": "java-collections"
+    },
+    {
+      "front": "Name one good programming practice related to variable naming.",
+      "back": "Choose meaningful names such as 'totalMarks' rather than short, ambiguous names like 'x'.",
+      "topic_id": "java-practices"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Java was developed at which company and released in what year?",
+      "answer": "Sun Microsystems, 1995.",
+      "topic_id": "java-intro"
+    },
+    {
+      "question": "What key feature allows Java programs to run on different operating systems without modification?",
+      "answer": "Platform-independence.",
+      "topic_id": "java-features"
+    },
+    {
+      "question": "What component is responsible for automatically reclaiming memory occupied by objects no longer in use?",
+      "answer": "The garbage collector (part of automatic memory management).",
+      "topic_id": "java-features"
+    },
+    {
+      "question": "What is the command-line utility used to compile a Java source file?",
+      "answer": "javac.",
+      "topic_id": "java-workflow"
+    },
+    {
+      "question": "In the standard Java workflow, what is produced after compiling a '.java' source file?",
+      "answer": "Bytecode (a '.class' file).",
+      "topic_id": "java-workflow"
+    },
+    {
+      "question": "What Java statement is used to print text to the console?",
+      "answer": "System.out.println();",
+      "topic_id": "java-fundamentals"
+    },
+    {
+      "question": "Which type of Java operator performs arithmetic calculations like addition and division?",
+      "answer": "Arithmetic operators (+, -, *, /).",
+      "topic_id": "java-fundamentals"
+    },
+    {
+      "question": "When would you typically use a 'for' loop in Java?",
+      "answer": "When the number of repetitions is known in advance.",
+      "topic_id": "java-fundamentals"
+    },
+    {
+      "question": "What is the relationship between a class and an object in OOP?",
+      "answer": "A class is a blueprint or template, while an object is a concrete instance of that class.",
+      "topic_id": "java-oop"
+    },
+    {
+      "question": "Which OOP principle involves creating a new class based on an existing class to reuse or specialize behavior?",
+      "answer": "Inheritance.",
+      "topic_id": "java-oop"
+    },
+    {
+      "question": "What distinguishes a Java constructor from a regular method?",
+      "answer": "A constructor has the same name as its class and does not declare a return type.",
+      "topic_id": "java-oop"
+    },
+    {
+      "question": "What keyword is used in Java to define a block of code that handles a specific type of exception?",
+      "answer": "catch.",
+      "topic_id": "java-exceptions"
+    },
+    {
+      "question": "Which interface from the Java Collections Framework is designed to store key-value pairs?",
+      "answer": "Map.",
+      "topic_id": "java-collections"
+    },
+    {
+      "question": "What is one important good programming practice regarding comments?",
+      "answer": "Use comments to explain why a decision was made, not merely to repeat what the code does.",
+      "topic_id": "java-practices"
+    }
+  ]
+}

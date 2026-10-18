@@ -7,6 +7,14 @@
       "topic_count": 5,
       "flashcard_count": 10,
       "quiz_count": 11
+    },
+    {
+      "id": "java-introduction-5-pages",
+      "title": "Introduction to Java Programming",
+      "file": "java-introduction-5-pages.json",
+      "topic_count": 8,
+      "flashcard_count": 17,
+      "quiz_count": 14
     }
   ]
 }

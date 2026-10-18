@@ -58,10 +58,83 @@
           "next_review_at": "2026-10-18T12:26:32.899833+00:00",
           "last_question": "Which normal form removes transitive dependencies, building upon 2NF?",
           "last_answer": "Third Normal Form (3NF)."
+        },
+        "java-introduction-5-pages:java-intro": {
+          "title": "What Is Java?",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "Java was developed at which company and released in what year?",
+          "last_answer": "Sun Microsystems, 1995."
+        },
+        "java-introduction-5-pages:java-features": {
+          "title": "Key Features of Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "What component is responsible for automatically reclaiming memory occupied by objects no longer in use?",
+          "last_answer": "The garbage collector (part of automatic memory management)."
+        },
+        "java-introduction-5-pages:java-workflow": {
+          "title": "How Java Works: JDK, JRE, JVM, and Bytecode",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "In the standard Java workflow, what is produced after compiling a '.java' source file?",
+          "last_answer": "Bytecode (a '.class' file)."
+        },
+        "java-introduction-5-pages:java-fundamentals": {
+          "title": "Java Fundamentals: Variables, Operators, Control Flow",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "When would you typically use a 'for' loop in Java?",
+          "last_answer": "When the number of repetitions is known in advance."
+        },
+        "java-introduction-5-pages:java-oop": {
+          "title": "Object-Oriented Programming (OOP) in Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "What distinguishes a Java constructor from a regular method?",
+          "last_answer": "A constructor has the same name as its class and does not declare a return type."
+        },
+        "java-introduction-5-pages:java-exceptions": {
+          "title": "Exception Handling in Java",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "What keyword is used in Java to define a block of code that handles a specific type of exception?",
+          "last_answer": "catch."
+        },
+        "java-introduction-5-pages:java-collections": {
+          "title": "Arrays and the Collections Framework",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "Which interface from the Java Collections Framework is designed to store key-value pairs?",
+          "last_answer": "Map."
+        },
+        "java-introduction-5-pages:java-practices": {
+          "title": "Good Programming Practices",
+          "attempts": 0,
+          "correct": 0,
+          "difficulty": "medium",
+          "next_review_at": "2026-10-18T12:53:54.001908+00:00",
+          "last_question": "What is one important good programming practice regarding comments?",
+          "last_answer": "Use comments to explain why a decision was made, not merely to repeat what the code does."
         }
       },
       "courses": [
-        "dbms-unit-1"
+        "dbms-unit-1",
+        "java-introduction-5-pages"
       ],
       "active_revision": "dbms-unit-1:functional-dependency"
     }
