@@ -1,0 +1,9 @@
+Database normalization organizes data to reduce duplication and improve data integrity.
+
+A functional dependency occurs when one attribute determines another attribute.
+
+First Normal Form requires atomic values and no repeating groups.
+
+Second Normal Form removes partial dependencies.
+
+Third Normal Form removes transitive dependencies.
