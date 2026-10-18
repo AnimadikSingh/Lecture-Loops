@@ -1,6 +1,10 @@
 name: LectureLoop material agent
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'lectures/**'
   workflow_dispatch:
     inputs:
       course_id:
@@ -20,19 +24,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
+      - name: Determine lecture source
+        id: source
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            source_path="${{ inputs.source_path }}"
+            course_id="${{ inputs.course_id }}"
+          else
+            mapfile -t sources < <(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" -- lectures/ | grep -E '\.(txt|md|pdf)$' || true)
+            if [ "${#sources[@]}" -ne 1 ]; then
+              echo "Automatic material generation needs exactly one supported lecture file in a commit. Use Run workflow for multiple files."
+              exit 1
+            fi
+            source_path="${sources[0]}"
+            filename="$(basename "$source_path")"
+            course_id="${filename%.*}"
+            course_id="$(echo "$course_id" | tr '[:upper:]_' '[:lower:]-' | sed -E 's/[^a-z0-9-]+/-/g; s/^-+|-+$//g')"
+          fi
+          echo "source_path=$source_path" >> "$GITHUB_OUTPUT"
+          echo "course_id=$course_id" >> "$GITHUB_OUTPUT"
       - name: Generate study material
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python -m lectureloop.cli ingest --course "${{ inputs.course_id }}" --source "${{ inputs.source_path }}" --output "materials/${{ inputs.course_id }}.json" --store data/students.json
+        run: python -m lectureloop.cli ingest --course "${{ steps.source.outputs.course_id }}" --source "${{ steps.source.outputs.source_path }}" --output "materials/${{ steps.source.outputs.course_id }}.json" --store data/students.json
       - name: Save generated study material
         run: |
           git config user.name "lectureloop-bot"
           git config user.email "lectureloop-bot@users.noreply.github.com"
           git add materials/ data/students.json
-          git diff --cached --quiet || git commit -m "docs: generate ${{ inputs.course_id }} study material"
+          git diff --cached --quiet || git commit -m "docs: generate ${{ steps.source.outputs.course_id }} study material"
           git push
 

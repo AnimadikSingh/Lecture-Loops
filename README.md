@@ -29,7 +29,7 @@ The implementation follows the brief's review policy exactly:
 2. Create a Gemini key in Google AI Studio.
 3. Add repository Action secrets named `GEMINI_API_KEY` and `TELEGRAM_BOT_TOKEN`. Never place either in a committed file.
 4. Copy `data/students.example.json` to `data/students.json`, replace the sample chat ID with the student’s chat ID, and commit it only in a private repository. For a production or multi-user system, replace `lectureloop.store` with a database rather than committing learner data.
-5. Commit a transcript (`.txt`/`.md`) or a text-based slide PDF. In **Actions**, run **LectureLoop material agent**, enter the course id and source path. Review the generated JSON before sharing it with students.
+5. Commit and push one transcript (`.txt`/`.md`) or text-based slide PDF in `lectures/`. The **LectureLoop material agent** starts automatically and derives the course ID from its filename. You can also run the workflow manually to choose the course ID or handle multiple lecture files. Review the generated JSON before sharing it with students.
 6. The **LectureLoop revision agent** starts sending reminders when a topic's `next_review_at` becomes due. Students can use `/courses`, `/notes COURSE`, `/flashcards COURSE`, `/quiz COURSE`, `/start`, and `/status`; clicking a flashcard reveals its answer directly in Telegram. Gemini grades quiz or revision replies, updates topic accuracy, and reschedules the topic.
 
 ## Add more study material
@@ -42,7 +42,7 @@ lectures/dbms-unit-2.pdf
 lectures/os-processes.txt
 ```
 
-Commit and push each new source file, then run **LectureLoop material agent** with its matching course id and source path. The agent updates the course catalog, creates the material JSON, and adds those topics to every configured student automatically. It is safe to re-run a course when the lecture file is improved.
+Commit and push one new source file at a time. The **LectureLoop material agent** starts automatically, updates the course catalog, creates the material JSON, and adds those topics to every configured student automatically. The dashboard publisher then runs after a successful material workflow. It is safe to re-run a course when the lecture file is improved.
 
 ## Study in Telegram
 
@@ -63,6 +63,10 @@ Flashcards have Telegram buttons for revealing an answer and moving to the next 
 The **Publish LectureLoop dashboard** workflow deploys notes, flashcards, and quiz answers to GitHub Pages. It deliberately publishes only `dashboard/` and `materials/`, never `data/students.json` or secrets.
 
 In GitHub, open **Settings → Pages**, set **Source** to **GitHub Actions**, then run the dashboard workflow once. Its deployment result contains the dashboard URL. Keep the repository private, or only publish materials that are safe for public viewing.
+
+## Instant Telegram replies
+
+GitHub Actions polling answers Telegram messages on its next scheduled run, normally within 15 minutes. For immediate replies, run the optional FastAPI webhook service and point Telegram to its public HTTPS URL. The full local-demo and production guidance is in [Real-Time Telegram Setup](docs/INSTANT_TELEGRAM_SETUP.md).
 
 ## Local check
 

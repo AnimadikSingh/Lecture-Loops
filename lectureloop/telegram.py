@@ -57,6 +57,24 @@ class TelegramClient:
     def updates(self, offset: int) -> list[dict[str, Any]]:
         return self._post("getUpdates", {"offset": offset, "timeout": 0, "allowed_updates": ["message", "callback_query"]})
 
+    def set_webhook(self, url: str, secret_token: str) -> None:
+        if not url.startswith("https://"):
+            raise ValueError("Telegram webhooks require a public HTTPS URL")
+        if len(secret_token) < 16:
+            raise ValueError("TELEGRAM_WEBHOOK_SECRET must contain at least 16 characters")
+        self._post(
+            "setWebhook",
+            {
+                "url": url,
+                "secret_token": secret_token,
+                "allowed_updates": ["message", "callback_query"],
+                "drop_pending_updates": False,
+            },
+        )
+
+    def delete_webhook(self) -> None:
+        self._post("deleteWebhook", {"drop_pending_updates": False})
+
 
 def _message_chunks(text: str, limit: int = 4000) -> list[str]:
     """Telegram caps messages at 4096 characters; preserve line boundaries where possible."""

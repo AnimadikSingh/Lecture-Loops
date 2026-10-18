@@ -15,6 +15,8 @@ concurrency:
 jobs:
   send-due-revisions:
     runs-on: ubuntu-latest
+    env:
+      TELEGRAM_WEBHOOK_URL: ${{ secrets.TELEGRAM_WEBHOOK_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -22,11 +24,13 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - name: Process Telegram commands first
+        if: env.TELEGRAM_WEBHOOK_URL == ''
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python -m lectureloop.cli updates --store data/students.json
       - name: Send due revision challenges
+        if: env.TELEGRAM_WEBHOOK_URL == ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python -m lectureloop.cli dispatch --store data/students.json
